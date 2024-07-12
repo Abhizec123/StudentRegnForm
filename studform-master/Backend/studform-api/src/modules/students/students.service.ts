@@ -1,14 +1,18 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { StudentDto } from './dto/student.dto';
 import { StudentsRepository } from './repo/students.repository';
-import { IStudentsService } from './students.interface';
+import { IStudentsRepository, IStudentsService } from './interfaces/students.interface';
 import { CreateStudentDto } from './dto/create-student.dto';
 import { students } from './Entity/create-student.entity';
 import { DeleteStudentDto } from './dto/delete-student.dto';
 
 @Injectable()
 export class StudentsService implements IStudentsService {
-  constructor(private readonly StudentsRepository: StudentsRepository) {}
+  constructor(
+    @Inject('IStudentsRepository')
+    private readonly StudentsRepository: IStudentsRepository,
+  ) {}
+
 
   public async getAllStudents(): Promise<StudentDto[] | any> {
     try {

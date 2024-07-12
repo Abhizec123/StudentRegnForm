@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { IStudentsRepository } from '../students.interface';
+import { IStudentsRepository } from '../interfaces/students.interface';
 import * as sqlite3 from 'sqlite3';
 import { CreateStudentDto } from '../dto/create-student.dto';
 import { Repository} from 'typeorm';

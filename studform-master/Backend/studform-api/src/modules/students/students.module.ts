@@ -11,9 +11,8 @@ import { students } from './Entity/create-student.entity';
   ],
   controllers: [StudentsController],
   providers: [
-    StudentsService,
-    StudentsRepository,
+    { provide: 'IStudentsService', useClass: StudentsService },
+    { provide: 'IStudentsRepository', useClass: StudentsRepository },
   ],
-  exports: [StudentsRepository], // Export the repository to make it available in other modules if needed
 })
 export class StudentsModule {}
